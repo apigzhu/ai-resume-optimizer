@@ -95,6 +95,13 @@ export default function Home() {
         ? "text-yellow-600"
         : "text-red-600";
 
+      const barColor =
+    result && result.match_score >= 80
+      ? "bg-green-500"
+      : result && result.match_score >= 60
+        ? "bg-yellow-500"
+        : "bg-red-500";      
+
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-10">
       <div className="mx-auto max-w-4xl space-y-6">
@@ -167,6 +174,21 @@ export default function Home() {
                 <div className="text-xs text-slate-400">匹配度</div>
               </div>
             </div>
+
+                  <div>
+              <div className="mb-1 flex justify-between text-xs text-slate-400">
+                <span>匹配度</span>
+                <span>{result.match_score} / 100</span>
+              </div>
+              <div className="h-2 w-full overflow-hidden rounded-full bg-slate-200">
+                <div
+                  className={`h-full rounded-full ${barColor}`}
+                  style={{
+                    width: `${Math.min(Math.max(result.match_score, 0), 100)}%`,
+                  }}
+                />
+              </div>
+            </div>  
 
             <p className="rounded-lg bg-slate-50 p-4 text-slate-700">
               {result.summary}
