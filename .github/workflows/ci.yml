@@ -46,4 +46,3 @@ jobs:
       - name: Build frontend
         working-directory: frontend
         run: npm run build
-'@ | Set-Content -Encoding UTF8 '.github\workflows\ci.yml'
